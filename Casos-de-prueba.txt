@@ -1,0 +1,59 @@
+|e|
+e:= Empresa new. 
+
+"agregarParcela:inst aPropietario:dni"
+e registrarDatosPropietario: 44307268 nombre: 'patricio'  apellido:'gaggiotti'.  "a Propietario"
+
+"incorporarParcelaPropia: codigoParcela hectareas: cant costoImpuestos: importe"
+e incorporarParcelaPropia: 444 hectareas: 100  costoImpuestos: 2000.  "a ParcelaPropia"
+e incorporarParcelaPropia: 555 hectareas: 200  costoImpuestos: 3000. "a ParcelaPropia"
+e incorporarParcelaPropia: 444 hectareas: 410  costoImpuestos: 29650. "'Parcela existente', la parcela ya existe."
+
+"incorporarParcelaAlquilada: codigoParcela hectareas: cant costoAlquiler:importe dniPropietario: dni"
+e incorporarParcelaAlquilada: 102 hectareas: 45 costoAlquiler: 45  dniPropietario: 44307268.  "a ParcelaAlquilada"
+e incorporarParcelaAlquilada: 102 hectareas: 58 costoAlquiler: 13456  dniPropietario: 44307268.  "'Parcela existente y/o propietario no existente', corresponde a parcela existente."
+e incorporarParcelaAlquilada: 58 hectareas: 60 costoAlquiler: 10000  dniPropietario: 42620268. "'Parcela existente y/o propietario no existente', corresponde a propietario no existente."
+
+"incorporarParcelaAcuerdo: codigoParcela hectareas: cant porcentajeAcordado: porcentaje dniPropietario: dni"
+e incorporarParcelaAcuerdo: 1520 hectareas: 7 porcentajeAcordado: 75  dniPropietario: 44307268."a ParcelaAcuerdo"
+e incorporarParcelaAcuerdo: 1520 hectareas: 52 porcentajeAcordado: 50  dniPropietario: 44307268. "'Parcela existente y/o propietario no existente', corresponde a parcela existente."
+e incorporarParcelaAcuerdo: 47 hectareas: 63 porcentajeAcordado: 25  dniPropietario: 49711449. "'Parcela existente y/o propietario no existente', corresponde a propietario no existente."
+
+"registrarSiembra: codigoParcela cultivo: nombreCultivo fecha: fecha"
+e registrarSiembra: 1520 cultivo: 'soja' fecha: '2/9/2022'."a Siembra"
+e registrarSiembra: 444  cultivo: 'trigo' fecha: '1/5/2022'. "a Siembra"
+e registrarSiembra: 102  cultivo: 'trigo' fecha: '1/6/2022'. "a Siembra"
+e registrarSiembra: 1520 cultivo: 'maiz' fecha: '21/4/2022'."'Parcela ya sembrada'"
+e registrarSiembra: 3 cultivo: 'girasol' fecha: '1/7/2022'."'Parcela no existente'"
+
+"registrarCosecha: codigoParcela rendimientoPorHectarea: valorh precioActualCultivo: valor fecha: fecha"
+e registrarCosecha: 1520 rendimientoPorHectarea: 50 precioActualCultivo: 100 fecha:'02/12/2022'. "a ParcelaAcuerdo"
+e registrarCosecha: 444 rendimientoPorHectarea: 50 precioActualCultivo: 100 fecha:'8/8/2022'.  "a ParcelaPropia"
+e registrarCosecha: 102 rendimientoPorHectarea: 40 precioActualCultivo: 80 fecha:'8/9/2022'.  "a ParcelaAlquilada"
+e registrarCosecha: 3 rendimientoPorHectarea: 140 precioActualCultivo: 30 fecha:'6/9/2022'."'Parcela no existente'"
+e registrarCosecha: 555 rendimientoPorHectarea: 152 precioActualCultivo: 40 fecha:'3/9/2022'. "'Parcela no sembrada'"
+
+"calcularGananciaUltimaCosecha: codigoParcela"
+e calcularGananciaUltimaCosecha:  1520. "8750.0"
+e calcularGananciaUltimaCosecha:  35. "'Parcela no existente'"
+e calcularGananciaUltimaCosecha:  555. "'La parcela no tiene cosechas'"
+
+"calcularGananciaTotal: codigoParcela"
+e calcularGananciaTotal: 444. "998000.0"
+e calcularGananciaTotal: 12. "'Parcela no existente'"
+e calcularGananciaTotal: 555."'La parcela no tiene cosechas'"
+
+"calcularPagoPropietarioUltCosechaconParcela: codigoParcela"
+e calcularPagoPropietarioUltCosechaconParcela: 1520. "26250.0"
+e calcularPagoPropietarioUltCosechaconParcela: 12. "'Parcela no existente'"
+e calcularPagoPropietarioUltCosechaconParcela: 555. "'La parcela no tiene cosechas'"
+
+"calcularPagoPropietarioUltCosecha: dni"
+e calcularPagoPropietarioUltCosecha: 44307268. "152705.0"
+e calcularPagoPropietarioUltCosecha: 49711449. "'No existe propietario con dicho dni'"
+
+"listarGanancias: codigoParcela"
+ e listarGanancias: 1520."a Dictionary('02/12/2022'->8750.0 )"
+e listarGanancias: 12."'Parcela no existente'"
+e listarGanancias: 555."'La parcela no tiene cosechas'"
+
